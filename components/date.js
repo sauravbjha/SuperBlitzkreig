@@ -1,7 +1,8 @@
-import { format } from 'date-fns'
-import { Date as PrismicDate } from 'prismic-reactjs'
+import { format } from 'date-fns';
+import { Date as PrismicDate } from 'prismic-reactjs';
 
 export default function Date({ dateString }) {
-  const date = PrismicDate(dateString)
-  return <time dateTime={dateString}>{format(date, 'LLLL	d, yyyy')}</time>
+  const date = PrismicDate(dateString) || '';
+  if (!date) return '';
+  return <time dateTime={dateString}>{format(date, 'LLLL	d, yyyy')}</time>;
 }
